@@ -8,21 +8,19 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import javax.servlet.http.HttpServletRequest;
-
 @ControllerAdvice
 public class TddControllerAdvice {
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(HotelNotFoundException.class)
     @ResponseBody
-    void handleHotelNotFoundException(HttpServletRequest req) {
+    void handleHotelNotFoundException() {
 
     }
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(CityNotFoundExcpetion.class)
     @ResponseBody
-    void handleCityNotFoundException(HttpServletRequest req) {
+    void handleCityNotFoundException() {
 
     }
 }
