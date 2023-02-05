@@ -1,9 +1,7 @@
 package com.biraj.tdd.service;
 
 import com.biraj.tdd.exception.HotelNotFoundException;
-import com.biraj.tdd.model.City;
 import com.biraj.tdd.model.Hotel;
-import com.biraj.tdd.repository.CityRepository;
 import com.biraj.tdd.repository.HotelRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,13 +23,9 @@ public class HotelServiceTest {
 
     private HotelService hotelService;
 
-    private CityService cityService;
-    private CityRepository cityRepository;
-
     @Before
     public void setup() {
         hotelService = new HotelService(hotelRepository);
-        cityService = new CityService(cityRepository);
     }
 
     @Test
@@ -50,9 +44,7 @@ public class HotelServiceTest {
     @Test
     public void it_should_not_update() {
         given(hotelRepository.findById(anyString())).willReturn(Optional.empty());
-        Exception exception = assertThrows(HotelNotFoundException.class, () -> {
-            hotelService.delete("1");
-        });
+        Exception exception = assertThrows(HotelNotFoundException.class, () -> hotelService.delete("1"));
         assertThat(exception).isInstanceOf(HotelNotFoundException.class);
     }
 
