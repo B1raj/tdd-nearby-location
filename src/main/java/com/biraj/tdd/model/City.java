@@ -14,15 +14,9 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @Builder
 public class City {
-
     @Id
     String id;
-
     double latitude;
-
     double longitude;
-
     String name;
-
-
 }

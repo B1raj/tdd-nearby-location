@@ -10,9 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class HotelDistance {
-
     double distance;
     String name;
-
     String location;
 }

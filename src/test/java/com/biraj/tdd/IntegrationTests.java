@@ -17,15 +17,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class IntegrationTests {
-
     @Autowired
     private TestRestTemplate testRestTemplate;
-
     @Test
     public void integration_test() {
         testRestTemplate.delete("/hotels/1");
     }
-
     @Test
     public void gets_near_by_hotels() {
         ResponseEntity<List> response = testRestTemplate.getForEntity("/hotels/search/{cityId}", List.class, "1");

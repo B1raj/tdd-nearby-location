@@ -1,6 +1,7 @@
 package com.biraj.tdd.controller;
 
 
+import com.biraj.tdd.exception.CityNotFoundExcpetion;
 import com.biraj.tdd.exception.HotelNotFoundException;
 import com.biraj.tdd.model.City;
 import com.biraj.tdd.model.Hotel;
@@ -68,5 +69,14 @@ public class TddControllerTest {
 
     }
 
+    @Test
+    void it_should_return_city_not_found_exception() throws Exception {
+        when(cityService.search(anyString())).thenReturn(Optional.empty());
+        mockMvc.perform(MockMvcRequestBuilders.get("/hotels/search/1")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(result -> assertTrue(result.getResolvedException() instanceof CityNotFoundExcpetion));
+
+    }
 
 }

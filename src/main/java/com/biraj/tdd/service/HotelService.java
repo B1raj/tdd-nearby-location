@@ -37,17 +37,15 @@ public class HotelService {
     public List<String> search(City city) {
         Iterable<Hotel> iterable = hotelRepository.findAll();
         Stream<Hotel> stream = StreamSupport.stream(iterable.spliterator(), false);
-        List<String> collect = stream.map(e -> new HotelDistance(distance(e.getLatitude(), e.getLongitude(), city.getLatitude(), city.getLongitude()), e.getName(), e.getLocation()))
+        return stream.map(e -> new HotelDistance(distance(e.getLatitude(), e.getLongitude(), city.getLatitude(), city.getLongitude()), e.getName(), e.getLocation()))
                 .sorted(Comparator.comparingDouble(HotelDistance::getDistance))
                 .limit(10)
                 .map(HotelDistance::getLocation)
                 .collect(Collectors.toList());
-
-        return collect;
     }
 
 
-    private static double distance(double lat1, double lon1, double lat2, double lon2) {
+    static double distance(double lat1, double lon1, double lat2, double lon2) {
         final int R = 6371;
         double latDistance = Math.toRadians(lat2 - lat1);
         double lonDistance = Math.toRadians(lon2 - lon1);

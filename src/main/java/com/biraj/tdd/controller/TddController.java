@@ -29,7 +29,6 @@ public class TddController {
     ResponseEntity<?> deleteHotel(@PathVariable String id) {
         hotelService.delete(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-
     }
 
     @GetMapping(path = "/hotels/search/{cityId}")
@@ -43,6 +42,5 @@ public class TddController {
         } else {
             throw new CityNotFoundExcpetion();
         }
-
     }
 }

@@ -42,4 +42,5 @@ public class CityServiceTest {
         assertThat(c.getId()).isEqualTo("1");
 
     }
+
 }

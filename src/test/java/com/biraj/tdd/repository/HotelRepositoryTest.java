@@ -15,17 +15,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class HotelRepositoryTest {
-
     @Autowired
     private HotelRepository hotelRepository;
-
     @Autowired
     private TestEntityManager testEntityManager;
-
     @Test
     public void gets_hotel_by_id() {
         Hotel savedHotel = testEntityManager.persistAndFlush(Hotel.builder().id("20").name("Novotel").isActive(true).build());
-
         Optional<Hotel> byId = hotelRepository.findById("20");
         assertThat(byId).isNotEmpty();
         assertThat(byId.get()).isEqualTo(savedHotel);
@@ -34,11 +30,7 @@ public class HotelRepositoryTest {
     @Test
     public void saves_hotel() {
         Hotel savedHotel = Hotel.builder().id("1").name("Novotel").isActive(true).build();
-
         Hotel save = hotelRepository.save(savedHotel);
         assertThat(save).isEqualTo(savedHotel);
-
     }
-
-
 }

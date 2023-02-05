@@ -16,15 +16,10 @@ import javax.persistence.Id;
 public class Hotel {
     @Id
     String id;
-
     String name;
-
     String location;
-
     Double latitude;
-
     Double longitude;
-
     boolean isActive;
 
 }
