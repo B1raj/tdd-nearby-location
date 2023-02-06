@@ -1,6 +1,4 @@
 package com.biraj.tdd.service;
-
-
 import com.biraj.tdd.model.City;
 import com.biraj.tdd.repository.CityRepository;
 import org.junit.Before;
@@ -12,7 +10,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
 
